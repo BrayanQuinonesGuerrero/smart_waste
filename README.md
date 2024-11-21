@@ -15,7 +15,7 @@ Sigue estos pasos para clonar y configurar el proyecto en tu máquina local.
 
 ### 1. Clonar el repositorio
 
-Ejecuta el siguiente comando en tu terminal para clonar el repositorio:
+Ejecuta el siguiente comando en tu terminal en linux para clonar el repositorio o en windows utiliza git bash para ejecutar todos los comandos:
 
 ```bash
 git clone https://github.com/BrayanQuinonesGuerrero/smart_waste.git
@@ -36,9 +36,9 @@ Crea un entorno virtual en el directorio del proyecto:
   virtualenv .venv
   ```
 - En Windows:
-```bash
-python3 -m venv .venv
-```
+  ```bash
+  python3 -m venv .venv
+  ```
 
 Activa el entorno virtual:
 
@@ -48,7 +48,7 @@ Activa el entorno virtual:
   ```
 - En Windows:
   ```cmd
-  .venv\Scripts\activate
+  .venv/Scripts/activate
   ```
 
 ### 3. Instalar las dependencias
@@ -61,12 +61,11 @@ pip3 install -r requirements.txt
 
 ### 4. Configurar la base de datos
 
-1. **Ejecutar migraciones**:
-   Aplica las migraciones de la base de datos:
+Aplica las migraciones de la base de datos:
 
-   ```bash
-   python3 manage.py migrate
-   ```
+```bash
+python3 manage.py migrate
+```
 
 ### 6. Ejecutar el servidor de desarrollo
 
