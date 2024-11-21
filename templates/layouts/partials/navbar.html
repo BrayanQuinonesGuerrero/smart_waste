@@ -20,7 +20,7 @@
                 <a class="nav-link" href="#">Clasificación</a>
             </li>
             <li class="nav-item {% if request.path == '/contacto/' %}active{% endif %}">
-                <a class="nav-link" href="#">Contacto</a>
+                <a class="nav-link" href="{% url "contact" %}">Contacto</a>
             </li>
             {% if user.is_authenticated %}
                 <li class="nav-item">

@@ -1,10 +1,11 @@
 from django.contrib import admin
 from django.urls import path
 
-from .views import HomeView
+from .views import HomeView, ContactView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeView.as_view(), name='home'),
+    path('contact/', ContactView.as_view(), name='contact'),
 ]
