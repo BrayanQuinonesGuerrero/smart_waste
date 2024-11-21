@@ -51,3 +51,40 @@ class RoutesView(TemplateView):
         context["routes"] = routes
         context["routes_json"] = json.dumps(routes)
         return context
+    
+
+class ContainersView(TemplateView):
+    template_name = 'home/containers.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # Simular datos de contenedores
+        containers = [
+            {
+                "name": "Contenedor 1",
+                "location": "Av. Siempre Viva 123",
+                "status": "Lleno",
+                "lat": -34.6037,
+                "lng": -58.3816,
+            },
+            {
+                "name": "Contenedor 2",
+                "location": "Calle Falsa 456",
+                "status": "Medio",
+                "lat": -34.6067,
+                "lng": -58.3916,
+            },
+            {
+                "name": "Contenedor 3",
+                "location": "Boulevard 789",
+                "status": "Vacío",
+                "lat": -34.6087,
+                "lng": -58.4016,
+            },
+        ]
+
+        # Convertir a JSON para enviarlo al template
+        context["containers"] = containers
+        context["containers_json"] = json.dumps(containers)
+        return context
