@@ -16,8 +16,8 @@
             <li class="nav-item {% if request.path == '/rutas/' %}active{% endif %}">
                 <a class="nav-link" href="#">Rutas</a>
             </li>
-            <li class="nav-item {% if request.path == '/clasificacion/' %}active{% endif %}">
-                <a class="nav-link" href="#">Clasificación</a>
+            <li class="nav-item {% if request.path == '/classification/' %}active{% endif %}">
+                <a class="nav-link" href="{% url "classification" %}">Clasificación</a>
             </li>
             <li class="nav-item {% if request.path == '/contacto/' %}active{% endif %}">
                 <a class="nav-link" href="{% url "contact" %}">Contacto</a>
