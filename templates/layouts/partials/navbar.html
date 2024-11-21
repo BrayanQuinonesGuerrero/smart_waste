@@ -14,7 +14,7 @@
                 <a class="nav-link" href="#">Contenedores</a>
             </li>
             <li class="nav-item {% if request.path == '/rutas/' %}active{% endif %}">
-                <a class="nav-link" href="#">Rutas</a>
+                <a class="nav-link" href="{% url "routes" %}">Rutas</a>
             </li>
             <li class="nav-item {% if request.path == '/classification/' %}active{% endif %}">
                 <a class="nav-link" href="{% url "classification" %}">Clasificación</a>

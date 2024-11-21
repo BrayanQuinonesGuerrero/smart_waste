@@ -1,0 +1,76 @@
+{% extends "layouts/base.html" %}
+
+
+{% block title %}
+    routes
+{% endblock title %}
+
+
+{% block content %}
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <h2 class="text-center mb-4">Rutas de Recolección</h2>
+        <p class="text-center text-muted">Consulta las rutas optimizadas para la recolección de residuos urbanos.</p>
+
+        <!-- Map Section -->
+        <div id="map" style="width: 100%; height: 400px"></div>
+
+        <!-- Routes List -->
+        <section class="my-5">
+            <h3 class="text-center">Rutas Sugeridas</h3>
+            <ul class="list-group mt-4">
+                {% for route in routes %}
+                    <li class="list-group-item">
+                        <strong>Ruta {{ forloop.counter }}:</strong> {{ route.name }} <br>
+                        <em>Distancia:</em> {{ route.distance }} km | <em>Tiempo estimado:</em> {{ route.time }} minutos
+                    </li>
+                {% empty %}
+                    <li class="list-group-item">No hay rutas disponibles en este momento.</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+
+    <!-- Google Maps Script -->
+    <script>
+        function initMap() {
+            const center = { lat: -34.6037, lng: -58.3816 }; // Coordenadas iniciales (cambia según tu área)
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 12,
+                center: center,
+            });
+
+            // Añadir marcadores y rutas simuladas
+            const routes = {{ routes_json|safe }};
+            routes.forEach(route => {
+                new google.maps.Marker({
+                    position: { lat: route.start.lat, lng: route.start.lng },
+                    map: map,
+                    title: "Inicio: " + route.name,
+                });
+
+                new google.maps.Marker({
+                    position: { lat: route.end.lat, lng: route.end.lng },
+                    map: map,
+                    title: "Fin: " + route.name,
+                });
+
+                const pathCoordinates = route.coordinates.map(coord => ({ lat: coord.lat, lng: coord.lng }));
+                new google.maps.Polyline({
+                    path: pathCoordinates,
+                    geodesic: true,
+                    strokeColor: "#FF0000",
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2,
+                    map: map,
+                });
+            });
+        }
+
+        // Cargar el mapa
+        window.onload = initMap;
+    </script>
+
+
+{% endblock content %}
