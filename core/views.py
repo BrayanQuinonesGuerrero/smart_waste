@@ -1,5 +1,8 @@
 from django.views.generic import TemplateView
+from django.contrib.auth.views import LoginView
 import json
+
+from .forms import CustomLoginForm
 
 
 class HomeView(TemplateView):
@@ -88,3 +91,11 @@ class ContainersView(TemplateView):
         context["containers"] = containers
         context["containers_json"] = json.dumps(containers)
         return context
+    
+
+class CustomLoginView(LoginView):
+    template_name = "login.html"
+    authentication_form = CustomLoginForm
+
+    def get_success_url(self):
+        return self.request.GET.get('next', '/')

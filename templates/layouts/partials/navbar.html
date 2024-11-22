@@ -10,12 +10,6 @@
             <li class="nav-item {% if request.path == '/' %}active{% endif %}">
                 <a class="nav-link" href="{% url 'home' %}">Home</a>
             </li>
-            <li class="nav-item {% if request.path == '/contenedores/' %}active{% endif %}">
-                <a class="nav-link" href="{% url "containers" %}">Contenedores</a>
-            </li>
-            <li class="nav-item {% if request.path == '/rutas/' %}active{% endif %}">
-                <a class="nav-link" href="{% url "routes" %}">Rutas</a>
-            </li>
             <li class="nav-item {% if request.path == '/classification/' %}active{% endif %}">
                 <a class="nav-link" href="{% url "classification" %}">Clasificación</a>
             </li>
@@ -23,12 +17,18 @@
                 <a class="nav-link" href="{% url "contact" %}">Contacto</a>
             </li>
             {% if user.is_authenticated %}
+                <li class="nav-item {% if request.path == '/contenedores/' %}active{% endif %}">
+                    <a class="nav-link" href="{% url "containers" %}">Contenedores</a>
+                </li>
+                <li class="nav-item {% if request.path == '/rutas/' %}active{% endif %}">
+                    <a class="nav-link" href="{% url "routes" %}">Rutas</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Logout</a>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
+                    <a class="nav-link" href="{% url "login" %}">Login</a>
                 </li>
             {% endif %}
         </ul>

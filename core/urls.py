@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 
-from .views import HomeView, ContactView, ClassificationView, RoutesView, ContainersView
+from .views import HomeView, ContactView, ClassificationView, RoutesView, ContainersView, LoginView
 
 
 urlpatterns = [
@@ -11,4 +11,5 @@ urlpatterns = [
     path('classification/', ClassificationView.as_view(), name='classification'),
     path('routes/', RoutesView.as_view(), name='routes'),
     path('containers/', ContainersView.as_view(), name='containers'),
+    path('login/', LoginView.as_view(), name='login'),
 ]

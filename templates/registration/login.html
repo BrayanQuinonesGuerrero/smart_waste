@@ -1,0 +1,39 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}
+    Login
+{% endblock title %}
+
+{% block content %}
+    <div class="container py-5 d-flex justify-content-center align-items-center">
+        <div class="col-md-6 col-lg-4">
+            <h2 class="text-center mb-4">Iniciar Sesión</h2>
+            <form method="post" action="{% url 'login' %}" class="needs-validation">
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {% for error in form.non_field_errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="mb-3">
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                </div>
+                <div class="mb-3">
+                    {{ form.password.label_tag }}
+                    {{ form.password }}
+                </div>
+                <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" id="rememberMe" name="remember_me">
+                    <label class="form-check-label" for="rememberMe">Recuérdame</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+            </form>
+            <p class="text-center mt-3">
+                ¿No tienes una cuenta? <a href="#">Regístrate aquí</a>
+            </p>
+        </div>
+    </div>
+{% endblock content %}
