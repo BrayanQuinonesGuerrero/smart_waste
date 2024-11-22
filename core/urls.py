@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 
-from .views import HomeView, ContactView, ClassificationView, RoutesView, ContainersView, LoginView
+from .views import HomeView, ContactView, ClassificationView, RoutesView, ContainersView, LoginView, LogoutView, SignupView
 
 
 urlpatterns = [
@@ -12,4 +12,6 @@ urlpatterns = [
     path('routes/', RoutesView.as_view(), name='routes'),
     path('containers/', ContainersView.as_view(), name='containers'),
     path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('signup/', SignupView.as_view(), name='signup'),
 ]

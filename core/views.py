@@ -1,8 +1,10 @@
 from django.views.generic import TemplateView
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 import json
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 
-from .forms import CustomLoginForm
+from .forms import CustomLoginForm, CustomSignupForm
 
 
 class HomeView(TemplateView):
@@ -99,3 +101,19 @@ class CustomLoginView(LoginView):
 
     def get_success_url(self):
         return self.request.GET.get('next', '/')
+    
+
+class CustomLogoutView(LogoutView):
+    template_name = "logout.html"
+    next_page = '/'
+
+
+
+class SignupView(CreateView):
+    template_name = "signup.html"
+    form_class = CustomSignupForm
+    success_url = reverse_lazy('login')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        return response

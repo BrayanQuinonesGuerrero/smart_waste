@@ -1,0 +1,40 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}
+    Signup
+{% endblock title %}
+
+{% block content %}
+
+    <!-- Signup Form -->
+    <div class="container py-3">
+        <h2 class="text-center mb-3">Regístrate</h2>
+        <form method="post" action="" class="needs-validation">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="mb-3">
+                {{ form.username.label_tag }}
+                <input type="text" name="username" class="form-control" placeholder="Username">
+            </div>
+            <div class="mb-3">
+                {{ form.email.label_tag }}
+                <input type="email" name="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="mb-3">
+                {{ form.password1.label_tag }}
+                <input type="password" name="password1" class="form-control" placeholder="Password">
+            </div>
+            <div class="mb-3">
+                {{ form.password2.label_tag }}
+                <input type="password" name="password2" class="form-control" placeholder="Confirm Password">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+            </div>
+        </form>
+        <p class="text-center mt-3">
+            ¿Ya tienes una cuenta? <a href="{% url 'login' %}">Inicia sesión aquí</a>
+        </p>
+    </div>
+
+{% endblock content %}
